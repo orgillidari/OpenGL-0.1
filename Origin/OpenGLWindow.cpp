@@ -87,7 +87,13 @@ namespace illidan
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
-
+		glColor4ub(200, 0, 0, 255);
+		glBegin(GL_TRIANGLES);
+		glVertex3f(-1, 0, -10.0f);
+		glVertex3f(1, 0, -10.0f);
+		glVertex3f(0, 1, -10.0f);
+		glEnd();
+		
 		SwapBuffers(m_HDC);
 	}
 }
