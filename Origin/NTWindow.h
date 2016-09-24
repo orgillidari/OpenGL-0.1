@@ -3,6 +3,7 @@
 #include <map>
 #include <windows.h>
 
+
 namespace illidan
 {
 	class NTWindow
@@ -25,26 +26,39 @@ namespace illidan
 
 	//Member
 	protected:
-		HWND m_Wnd;
+		LPCWSTR m_pWCName;
+		LPCWSTR m_pWName;
+		int m_Width;
+		int m_Height;
+		HWND m_WND;
+		HDC m_HDC;
+
+	protected:
 		NTWindow();
 		NTWindow(const NTWindow& that);
-		NTWindow operator=(const NTWindow& that);
-		~NTWindow();
+		NTWindow& operator=(const NTWindow& that);
+		virtual ~NTWindow();
 
-		int InnerCreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
 	public:
-		
-
-		
 		int UpdateNTWindow();
 
+	//Virtual
+	public:
+		virtual int Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
+		virtual void Init();
+		virtual void Update();
+
 	};
+
 
 	template <typename T>
 	T* NTWindow::CreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
 	{
-		T* pWindow= new T();
-		pWindow->InnerCreateNTWindow(pWCName, pWName, width, height);
+		T* pWindow = new T();
+		pWindow->Construtor(pWCName, pWName, width, height);
+		pWindow->Init();
 		return pWindow;
 	}
+
+
 }

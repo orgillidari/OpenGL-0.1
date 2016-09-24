@@ -5,9 +5,10 @@
 #include "NTWindow.h"
 #include "OpenGLWindow.h"
 
+
 using namespace illidan;
 
-int __stdcall WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
+INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
 	//重定向输出日志
 	freopen("main.log", "w", stdout);

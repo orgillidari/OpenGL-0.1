@@ -1,5 +1,6 @@
 #include "NTWindow.h"
 
+
 namespace illidan
 {
 	HINSTANCE NTWindow::s_Instance;
@@ -35,7 +36,7 @@ namespace illidan
 		}
 
 		//注册窗口类
-		WNDCLASSEX* pWCE = new WNDCLASSEX;
+		WNDCLASSEX* pWCE = new WNDCLASSEX();
 		pWCE->cbSize = sizeof(WNDCLASSEX);
 		pWCE->style = CS_HREDRAW | CS_VREDRAW;
 		pWCE->lpfnWndProc = NTWindow::WinPro;
@@ -74,59 +75,72 @@ namespace illidan
 
 	NTWindow::NTWindow()
 		:
-		m_Wnd(0)
+		m_pWCName(0), m_pWName(0), m_Width(0), m_Height(0), m_WND(0), m_HDC(0)
 	{
-
 	}
 
-	NTWindow::~NTWindow()
-	{
-		m_Wnd = 0;
-	}
-
+	//Simple do it;
 	NTWindow::NTWindow(const NTWindow& that)
 		:
-		m_Wnd(that.m_Wnd)
+		m_pWCName(that.m_pWCName), m_pWName(that.m_pWName), m_Width(that.m_Width), m_Height(that.m_Height), m_WND(that.m_WND), m_HDC(that.m_HDC)
 	{
-
 	}
 
-	NTWindow NTWindow::operator=(const NTWindow& that)
+	//Simple do it;
+	NTWindow& NTWindow::operator=(const NTWindow& that)
 	{
 		if (this != &that)
 		{
-			m_Wnd = that.m_Wnd;
+			m_pWCName = that.m_pWCName;
+			m_pWName = that.m_pWName;
+			m_Width = that.m_Width;
+			m_Height = that.m_Height;
+			m_WND = that.m_WND;
+			m_HDC = that.m_HDC;
 		}
 		return *this;
 	}
 
-	int NTWindow::InnerCreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
+
+	//Simple do it;
+	NTWindow::~NTWindow()
 	{
+		m_pWCName = 0;
+		m_pWName = 0;
+		m_Width = 0;
+		m_Height = 0;
+		m_WND = 0;
+		m_HDC = 0;
+	}
+
+	int NTWindow::Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
+	{
+		m_pWCName = pWCName;
+		m_pWName = pWName;
+		m_Width = width;
+		m_Height = height;
+
 		//计算窗口大小和位置
 		int screenW = GetSystemMetrics(SM_CXSCREEN);
 		int screenH = GetSystemMetrics(SM_CYSCREEN);
 
 		RECT rect
 		{
-			(screenW - width) / 2,
-			(screenH - height) / 2,
-			rect.left + width,
-			rect.top + height
+			(screenW - m_Width) / 2,
+			(screenH - m_Height) / 2,
+			rect.left + m_Width,
+			rect.top + m_Height
 		};
 
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, FALSE);
 
-
 		//创建窗口并显示
-		HWND hWnd = CreateWindowEx(NULL, pWCName, pWName, WS_OVERLAPPEDWINDOW, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, NULL, NULL, s_Instance, NULL);
-		if (hWnd == 0)
-		{
-			DWORD err = GetLastError();
-			return -1;
-		}
+		m_WND = CreateWindowEx(NULL, m_pWCName, m_pWName, WS_OVERLAPPEDWINDOW, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, NULL, NULL, s_Instance, NULL);
+		ShowWindow(m_WND, SW_SHOW);
+		UpdateWindow(m_WND);
 
-		ShowWindow(hWnd, SW_SHOW);
-		UpdateWindow(hWnd);
+		//获取HDC
+		m_HDC = GetDC(m_WND);
 
 		return 0;
 	}
@@ -147,8 +161,20 @@ namespace illidan
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
+
+			Update();
 		}
 
 		return 0;
+	}
+
+	void NTWindow::Init()
+	{
+
+	}
+
+	void NTWindow::Update()
+	{
+
 	}
 }
