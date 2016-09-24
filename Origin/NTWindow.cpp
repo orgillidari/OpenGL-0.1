@@ -72,7 +72,6 @@ namespace illidan
 		return 0;
 	}
 
-
 	NTWindow::NTWindow()
 		:
 		m_pWCName(0), m_pWName(0), m_Width(0), m_Height(0), m_WND(0), m_HDC(0)
@@ -101,7 +100,6 @@ namespace illidan
 		return *this;
 	}
 
-
 	//Simple do it;
 	NTWindow::~NTWindow()
 	{
@@ -111,6 +109,29 @@ namespace illidan
 		m_Height = 0;
 		m_WND = 0;
 		m_HDC = 0;
+	}
+
+	int NTWindow::UpdateNTWindow()
+	{
+		//消息循环
+		MSG msg;
+		while (true)
+		{
+			if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+			{
+				if (msg.message == WM_QUIT)
+				{
+					break;
+				}
+
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+
+			Update();
+		}
+
+		return 0;
 	}
 
 	int NTWindow::Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
@@ -141,29 +162,6 @@ namespace illidan
 
 		//获取HDC
 		m_HDC = GetDC(m_WND);
-
-		return 0;
-	}
-
-	int NTWindow::UpdateNTWindow()
-	{
-		//消息循环
-		MSG msg;
-		while (true)
-		{
-			if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
-			{
-				if (msg.message == WM_QUIT)
-				{
-					break;
-				}
-
-				TranslateMessage(&msg);
-				DispatchMessage(&msg);
-			}
-
-			Update();
-		}
 
 		return 0;
 	}

@@ -5,6 +5,32 @@
 
 namespace illidan
 {
+	OpenGLWindow::OpenGLWindow()
+		: NTWindow(), m_PixelID(0), m_HGLRC(0)
+	{
+	}
+
+	OpenGLWindow::OpenGLWindow(const OpenGLWindow& that)
+		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC)
+	{
+	}
+	OpenGLWindow& OpenGLWindow::operator=(const OpenGLWindow& that)
+	{
+		if (this != &that)
+		{
+			NTWindow::operator=(that);
+			m_PixelID = that.m_PixelID;
+			m_HGLRC = that.m_HGLRC;
+		}
+
+		return *this;
+	}
+	OpenGLWindow::~OpenGLWindow()
+	{
+		m_PixelID = 0;
+		m_HGLRC = 0;
+	}
+
 	int OpenGLWindow::Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
 	{
 		NTWindow::Construtor(pWCName, pWName, width, height);
@@ -44,32 +70,6 @@ namespace illidan
 		wglMakeCurrent(m_HDC, m_HGLRC);
 
 		return 0;
-	}
-
-	OpenGLWindow::OpenGLWindow()
-		: NTWindow(), m_PixelID(0), m_HGLRC(0)
-	{
-	}
-
-	OpenGLWindow::OpenGLWindow(const OpenGLWindow& that)
-		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC)
-	{
-	}
-	OpenGLWindow& OpenGLWindow::operator=(const OpenGLWindow& that)
-	{
-		if (this != &that)
-		{
-			NTWindow::operator=(that);
-			m_PixelID = that.m_PixelID;
-			m_HGLRC = that.m_HGLRC;
-		}
-
-		return *this;
-	}
-	OpenGLWindow::~OpenGLWindow()
-	{
-		m_PixelID = 0;
-		m_HGLRC = 0;
 	}
 
 	void OpenGLWindow::Init()

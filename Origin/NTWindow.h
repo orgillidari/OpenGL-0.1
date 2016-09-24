@@ -59,6 +59,4 @@ namespace illidan
 		pWindow->Init();
 		return pWindow;
 	}
-
-
 }
