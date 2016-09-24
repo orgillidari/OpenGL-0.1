@@ -144,9 +144,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NTWindow.cpp" />
+    <ClCompile Include="OpenGLWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NTWindow.h" />
+    <ClInclude Include="OpenGLWindow.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

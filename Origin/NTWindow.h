@@ -8,11 +8,11 @@ namespace illidan
 	class NTWindow
 	{
 	//Static
-	private:
+	protected:
 		static HINSTANCE s_Instance;
 		static std::map<LPCWSTR, WNDCLASSEX*> s_WndClassCache;
 
-	private:
+	protected:
 		static LRESULT CALLBACK WinPro(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	public:
@@ -20,16 +20,31 @@ namespace illidan
 		static int RegisterNTWindowClass(LPCWSTR pName);
 		static int ClearNTWindowClass();
 
+		template <typename T>
+		static T* CreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
 
 	//Member
-	private:
+	protected:
 		HWND m_Wnd;
-
-	public:
 		NTWindow();
+		NTWindow(const NTWindow& that);
+		NTWindow operator=(const NTWindow& that);
+		~NTWindow();
 
-		int CreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
+		int InnerCreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
+	public:
+		
+
+		
 		int UpdateNTWindow();
 
 	};
+
+	template <typename T>
+	T* NTWindow::CreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
+	{
+		T* pWindow= new T();
+		pWindow->InnerCreateNTWindow(pWCName, pWName, width, height);
+		return pWindow;
+	}
 }

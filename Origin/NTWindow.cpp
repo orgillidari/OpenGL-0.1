@@ -79,7 +79,28 @@ namespace illidan
 
 	}
 
-	int NTWindow::CreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
+	NTWindow::~NTWindow()
+	{
+		m_Wnd = 0;
+	}
+
+	NTWindow::NTWindow(const NTWindow& that)
+		:
+		m_Wnd(that.m_Wnd)
+	{
+
+	}
+
+	NTWindow NTWindow::operator=(const NTWindow& that)
+	{
+		if (this != &that)
+		{
+			m_Wnd = that.m_Wnd;
+		}
+		return *this;
+	}
+
+	int NTWindow::InnerCreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
 	{
 		//计算窗口大小和位置
 		int screenW = GetSystemMetrics(SM_CXSCREEN);
