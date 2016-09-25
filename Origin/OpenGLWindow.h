@@ -1,6 +1,7 @@
 #pragma once
 
 #include "NTWindow.h"
+#include "Lua.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -14,6 +15,7 @@ namespace illidan
 	protected:
 		int m_PixelID;
 		HGLRC m_HGLRC;
+		Lua* m_Lua;
 
 	public:
 		OpenGLWindow();
@@ -26,5 +28,7 @@ namespace illidan
 		virtual int Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height) override;
 		virtual void Init() override;
 		virtual void Update() override;
+		virtual void Destroy() override;
+
 	};
 }

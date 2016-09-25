@@ -47,6 +47,7 @@ namespace illidan
 		virtual int Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
 		virtual void Init();
 		virtual void Update();
+		virtual void Destroy();
 
 	};
 
@@ -56,7 +57,6 @@ namespace illidan
 	{
 		T* pWindow = new T();
 		pWindow->Construtor(pWCName, pWName, width, height);
-		pWindow->Init();
 		return pWindow;
 	}
 }

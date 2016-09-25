@@ -175,4 +175,9 @@ namespace illidan
 	{
 
 	}
+
+	void NTWindow::Destroy()
+	{
+
+	}
 }

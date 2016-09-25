@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
+#include "Lua.h"
 #include "NTWindow.h"
 #include "OpenGLWindow.h"
 
@@ -13,16 +14,29 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	//重定向输出日志
 	freopen("main.log", "w", stdout);
 
+	//创建Lua环境
+	Lua* lua = new Lua();
+	lua->Init();
+	lua->CallFile("main.lua");
+	int r;
+	lua->CallFunction("Add", 3, 2, r);
+
 	//注册NTWindow信息
 	NTWindow::RegisterInstance(hInstance);
 	NTWindow::RegisterNTWindowClass(L"OpenGL");
 
 	//创建NTWindow窗口
 	NTWindow* pWindow = NTWindow::CreateNTWindow<OpenGLWindow>(L"OpenGL", L"Demo", 1280, 800);
+	pWindow->Init();
 	pWindow->UpdateNTWindow();
+	pWindow->Destroy();
 
 	//清除NTWindow信息
 	NTWindow::ClearNTWindowClass();
+
+	//清除Lua环境
+	lua->Destroy();
+	delete lua;
 
 	//关闭输出日志
 	fclose(stdout);

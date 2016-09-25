@@ -6,13 +6,17 @@
 namespace illidan
 {
 	OpenGLWindow::OpenGLWindow()
-		: NTWindow(), m_PixelID(0), m_HGLRC(0)
+		: NTWindow(), m_PixelID(0), m_HGLRC(0), m_Lua(0)
 	{
 	}
 
 	OpenGLWindow::OpenGLWindow(const OpenGLWindow& that)
 		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC)
 	{
+		if (m_Lua)
+			delete m_Lua;
+
+		m_Lua = that.m_Lua;
 	}
 	OpenGLWindow& OpenGLWindow::operator=(const OpenGLWindow& that)
 	{
@@ -21,6 +25,11 @@ namespace illidan
 			NTWindow::operator=(that);
 			m_PixelID = that.m_PixelID;
 			m_HGLRC = that.m_HGLRC;
+			
+			if (m_Lua)
+				delete m_Lua;
+
+			m_Lua = that.m_Lua;
 		}
 
 		return *this;
@@ -29,6 +38,7 @@ namespace illidan
 	{
 		m_PixelID = 0;
 		m_HGLRC = 0;
+		m_Lua = 0;
 	}
 
 	int OpenGLWindow::Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
@@ -74,11 +84,20 @@ namespace illidan
 
 	void OpenGLWindow::Init()
 	{
+		//创建Lua环境
+		m_Lua = new Lua();
+		m_Lua->Init();
+		m_Lua->CallFile("OpenGLWindow.lua");
+
 		glClearColor(41.0f / 255.0f, 71.0f / 255.0f, 121.0f / 255.0f, 1.0f);
 	}
 
 	void OpenGLWindow::Update()
 	{
+		int r;
+		m_Lua->CallFunction("Add", 3, 2, r);
+
+
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -95,5 +114,12 @@ namespace illidan
 		glEnd();
 		
 		SwapBuffers(m_HDC);
+	}
+
+	void OpenGLWindow::Destroy()
+	{
+		//清除Lua环境
+		m_Lua->Destroy();
+		delete m_Lua;
 	}
 }
