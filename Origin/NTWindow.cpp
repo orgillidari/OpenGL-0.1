@@ -5,12 +5,16 @@ namespace illidan
 {
 	HINSTANCE NTWindow::s_Instance;
 	std::map<LPCWSTR, WNDCLASSEX*> NTWindow::s_WndClassCache;
-
+	std::map<HWND, NTWindow*> NTWindow::s_WndCache;
 
 	LRESULT CALLBACK NTWindow::WinPro(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		switch (msg)
 		{
+		case WM_KEYDOWN:
+			break;
+		case WM_KEYUP:
+			break;
 		case WM_CLOSE:
 			DestroyWindow(hWnd);
 			break;
@@ -72,6 +76,17 @@ namespace illidan
 		return 0;
 	}
 
+	int NTWindow::ClearNTWindow()
+	{
+		for (std::map<HWND, NTWindow*>::iterator it = s_WndCache.begin(); it != s_WndCache.end(); ++it)
+		{
+			delete it->second;
+		}
+		s_WndCache.clear();
+
+		return 0;
+	}
+
 	NTWindow::NTWindow()
 		:
 		m_pWCName(0), m_pWName(0), m_Width(0), m_Height(0), m_WND(0), m_HDC(0)
@@ -109,6 +124,16 @@ namespace illidan
 		m_Height = 0;
 		m_WND = 0;
 		m_HDC = 0;
+	}
+
+	int NTWindow::RegisterNTWindow()
+	{
+		if (s_WndCache.find(m_WND) != s_WndCache.end())
+		{
+			return -1;
+		}
+		s_WndCache.insert(std::pair<HWND, NTWindow*>(m_WND, this));
+		return 0;
 	}
 
 	int NTWindow::UpdateNTWindow()

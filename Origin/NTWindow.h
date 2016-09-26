@@ -12,6 +12,7 @@ namespace illidan
 	protected:
 		static HINSTANCE s_Instance;
 		static std::map<LPCWSTR, WNDCLASSEX*> s_WndClassCache;
+		static std::map<HWND, NTWindow*> s_WndCache;
 
 	protected:
 		static LRESULT CALLBACK WinPro(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -20,6 +21,7 @@ namespace illidan
 		static int RegisterInstance(HINSTANCE instance);
 		static int RegisterNTWindowClass(LPCWSTR pName);
 		static int ClearNTWindowClass();
+		static int ClearNTWindow();
 
 		template <typename T>
 		static T* CreateNTWindow(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
@@ -38,6 +40,7 @@ namespace illidan
 		NTWindow(const NTWindow& that);
 		NTWindow& operator=(const NTWindow& that);
 		virtual ~NTWindow();
+		int RegisterNTWindow();
 
 	public:
 		int UpdateNTWindow();
@@ -57,6 +60,7 @@ namespace illidan
 	{
 		T* pWindow = new T();
 		pWindow->Construtor(pWCName, pWName, width, height);
+		pWindow->RegisterNTWindow();
 		return pWindow;
 	}
 }

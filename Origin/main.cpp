@@ -31,6 +31,7 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	pWindow->Destroy();
 
 	//清除NTWindow信息
+	NTWindow::ClearNTWindow();
 	NTWindow::ClearNTWindowClass();
 
 	////清除Lua环境
