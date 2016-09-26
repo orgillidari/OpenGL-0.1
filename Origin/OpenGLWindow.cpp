@@ -87,37 +87,26 @@ namespace illidan
 		//创建Lua环境
 		m_Lua = new Lua();
 		m_Lua->Init();
+		m_Lua->ExportOpenGLAPI();
 		m_Lua->CallFile("OpenGLWindow.lua");
-
-		glClearColor(41.0f / 255.0f, 71.0f / 255.0f, 121.0f / 255.0f, 1.0f);
+		
+		//调用Init
+		m_Lua->CallFunction("Init");	
 	}
 
 	void OpenGLWindow::Update()
 	{
-		int r;
-		m_Lua->CallFunction("Add", 3, 2, r);
+		//调用Update
+		m_Lua->CallFunction("Update");
 
-
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluPerspective(45.0f, (float)m_Width / (float)m_Height, 0.1f, 1000.0f);
-
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-
-		glColor4ub(200, 0, 0, 255);
-		glBegin(GL_TRIANGLES);
-		glVertex3f(-1, 0, -10.0f);
-		glVertex3f(1, 0, -10.0f);
-		glVertex3f(0, 1, -10.0f);
-		glEnd();
-		
 		SwapBuffers(m_HDC);
 	}
 
 	void OpenGLWindow::Destroy()
 	{
+		//调用Destroy
+		m_Lua->CallFunction("Destroy");
+
 		//清除Lua环境
 		m_Lua->Destroy();
 		delete m_Lua;

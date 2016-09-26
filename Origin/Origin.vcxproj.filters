@@ -114,6 +114,18 @@
     <ClCompile Include="Lua\lzio.c">
       <Filter>3-Lua</Filter>
     </ClCompile>
+    <ClCompile Include="Lua.cpp">
+      <Filter>2-Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLAPI.cpp">
+      <Filter>2-Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportOpenGLAPI.cpp">
+      <Filter>2-Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLUAPI.cpp">
+      <Filter>2-Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -193,6 +205,18 @@
     </ClInclude>
     <ClInclude Include="Lua\lzio.h">
       <Filter>3-Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="Lua.h">
+      <Filter>1-Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLAPI.h">
+      <Filter>1-Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportOpenGLAPI.h">
+      <Filter>1-Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLUAPI.h">
+      <Filter>1-Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

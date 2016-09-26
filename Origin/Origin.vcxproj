@@ -146,6 +146,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ExportOpenGLAPI.cpp" />
+    <ClCompile Include="OpenGLAPI.cpp" />
     <ClCompile Include="Lua.cpp" />
     <ClCompile Include="Lua\lapi.c" />
     <ClCompile Include="Lua\lauxlib.c" />
@@ -178,9 +180,12 @@
     <ClCompile Include="Lua\lzio.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NTWindow.cpp" />
+    <ClCompile Include="OpenGLUAPI.cpp" />
     <ClCompile Include="OpenGLWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ExportOpenGLAPI.h" />
+    <ClInclude Include="OpenGLAPI.h" />
     <ClInclude Include="Lua.h" />
     <ClInclude Include="Lua\lapi.h" />
     <ClInclude Include="Lua\lauxlib.h" />
@@ -206,6 +211,7 @@
     <ClInclude Include="Lua\lvm.h" />
     <ClInclude Include="Lua\lzio.h" />
     <ClInclude Include="NTWindow.h" />
+    <ClInclude Include="OpenGLUAPI.h" />
     <ClInclude Include="OpenGLWindow.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
