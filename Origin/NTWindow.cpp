@@ -9,11 +9,27 @@ namespace illidan
 
 	LRESULT CALLBACK NTWindow::WinPro(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
+		if (s_WndCache.find(hWnd) == s_WndCache.end())
+		{
+			return DefWindowProc(hWnd, msg, wParam, lParam);
+		}
+
 		switch (msg)
 		{
+		case WM_RBUTTONDOWN:
+			s_WndCache[hWnd]->OnRButtonDown(wParam, lParam);
+			break;
+		case WM_RBUTTONUP:
+			s_WndCache[hWnd]->OnRButtonUp(wParam, lParam);
+			break;
+		case WM_MOUSEMOVE:
+			s_WndCache[hWnd]->OnMouseMove(wParam, lParam);
+			break;
 		case WM_KEYDOWN:
+			s_WndCache[hWnd]->OnKeyDown(wParam, lParam);
 			break;
 		case WM_KEYUP:
+			s_WndCache[hWnd]->OnKeyUp(wParam, lParam);
 			break;
 		case WM_CLOSE:
 			DestroyWindow(hWnd);
@@ -22,6 +38,7 @@ namespace illidan
 			PostQuitMessage(0);
 			break;
 		}
+
 		return DefWindowProc(hWnd, msg, wParam, lParam);
 	}
 
@@ -204,5 +221,30 @@ namespace illidan
 	void NTWindow::Destroy()
 	{
 
+	}
+
+	void NTWindow::OnRButtonDown(WPARAM wParam, LPARAM lParam)
+	{
+		//printf("-----------------OnRButtonDown\n");
+	}
+
+	void NTWindow::OnRButtonUp(WPARAM wParam, LPARAM lParam)
+	{
+		//printf("-----------------OnRButtonUp\n");
+	}
+
+	void NTWindow::OnMouseMove(WPARAM wParam, LPARAM lParam)
+	{
+		//printf("-----------------OnMouseMove\n");
+	}
+
+	void NTWindow::OnKeyDown(WPARAM wParam, LPARAM lParam)
+	{
+		//printf("-----------------OnKeyDown\n");
+	}
+
+	void NTWindow::OnKeyUp(WPARAM wParam, LPARAM lParam)
+	{
+		//printf("-----------------OnKeyUp\n");
 	}
 }

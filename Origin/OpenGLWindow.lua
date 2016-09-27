@@ -19,6 +19,6 @@ function Update()
 	glEnd();
 end
 
-function Destory()
+function Destroy()
 
 end

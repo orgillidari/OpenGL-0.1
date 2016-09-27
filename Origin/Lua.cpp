@@ -22,8 +22,7 @@ namespace illidan
 		case LUA_ERRMEM://内存错误  
 			sprintf_s(sErrorType, sizeof(sErrorType), "%s", "memory allocation error");
 			break;
-		case LUA_ERRRUN://运行时错误  
-						/*const char *buf = "my222lib.myfun()";类似这行语句可以引起运行时错误，my222lib实际上不存在这样的库，返回的值是nil*/
+		case LUA_ERRRUN://运行时错误
 			sprintf_s(sErrorType, sizeof(sErrorType), "%s", "a runtime error");
 			break;
 		case LUA_YIELD://线程被挂起错误  
@@ -105,7 +104,7 @@ namespace illidan
 			PrintError(m_L, res);
 			return -1;
 		}
-		r = lua_tonumber(m_L, -1);
+		r = (int)lua_tonumber(m_L, -1);
 		return 0;
 	}
 

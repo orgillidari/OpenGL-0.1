@@ -52,6 +52,11 @@ namespace illidan
 		virtual void Update();
 		virtual void Destroy();
 
+		virtual void OnRButtonDown(WPARAM wParam, LPARAM lParam);
+		virtual void OnRButtonUp(WPARAM wParam, LPARAM lParam);
+		virtual void OnMouseMove(WPARAM wParam, LPARAM lParam);
+		virtual void OnKeyDown(WPARAM wParam, LPARAM lParam);
+		virtual void OnKeyUp(WPARAM wParam, LPARAM lParam);
 	};
 
 

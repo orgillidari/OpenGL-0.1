@@ -126,6 +126,12 @@
     <ClCompile Include="OpenGLUAPI.cpp">
       <Filter>2-Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>2-Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3f.cpp">
+      <Filter>2-Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -216,6 +222,12 @@
       <Filter>1-Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLUAPI.h">
+      <Filter>1-Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>1-Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3f.h">
       <Filter>1-Header Files</Filter>
     </ClInclude>
   </ItemGroup>
