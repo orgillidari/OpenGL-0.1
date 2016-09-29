@@ -2,6 +2,7 @@
 
 #include "NTWindow.h"
 #include "Lua.h"
+#include "Camera.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -16,6 +17,7 @@ namespace illidan
 		int m_PixelID;
 		HGLRC m_HGLRC;
 		Lua* m_Lua;
+		Camera* m_Camera;
 
 	public:
 		OpenGLWindow();
@@ -29,6 +31,12 @@ namespace illidan
 		virtual void Init() override;
 		virtual void Update() override;
 		virtual void Destroy() override;
+
+		virtual void OnRButtonDown(WPARAM wParam, LPARAM lParam) override;
+		virtual void OnRButtonUp(WPARAM wParam, LPARAM lParam) override;
+		virtual void OnMouseMove(WPARAM wParam, LPARAM lParam) override;
+		virtual void OnKeyDown(WPARAM wParam, LPARAM lParam) override;
+		virtual void OnKeyUp(WPARAM wParam, LPARAM lParam) override;
 
 	};
 }

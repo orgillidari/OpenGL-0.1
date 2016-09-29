@@ -3,13 +3,13 @@ function Init()
 end
 
 function Update()
-	glClear(0x00004000, 0x00000100);
-	glMatrixMode(0x1701);
-	glLoadIdentity();
-	gluPerspective(45.0, 1280 / 800, 0.1, 1000.0);
-
-	glMatrixMode(0x1700);
-	glLoadIdentity();
+	glColor4ub(60, 60, 60, 255);
+	glBegin(0x0007);
+	glVertex3f(-5.0, -1.0, 5.0);
+	glVertex3f(5.0, -1.0, 5.0);
+	glVertex3f(5.0, -1.0, -5.0);
+	glVertex3f(-5.0, -1.0, -5.0);
+	glEnd();
 
 	glColor4ub(200, 0, 0, 255);
 	glBegin(0x0004);

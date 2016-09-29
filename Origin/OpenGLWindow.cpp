@@ -6,30 +6,23 @@
 namespace illidan
 {
 	OpenGLWindow::OpenGLWindow()
-		: NTWindow(), m_PixelID(0), m_HGLRC(0), m_Lua(0)
+		: NTWindow(), m_PixelID(0), m_HGLRC(0), m_Lua(0), m_Camera(0)
 	{
 	}
 
 	OpenGLWindow::OpenGLWindow(const OpenGLWindow& that)
-		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC)
+		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC), m_Camera(that.m_Camera)
 	{
-		if (m_Lua)
-			delete m_Lua;
-
-		m_Lua = that.m_Lua;
 	}
 	OpenGLWindow& OpenGLWindow::operator=(const OpenGLWindow& that)
 	{
 		if (this != &that)
 		{
 			NTWindow::operator=(that);
+
 			m_PixelID = that.m_PixelID;
 			m_HGLRC = that.m_HGLRC;
-			
-			if (m_Lua)
-				delete m_Lua;
-
-			m_Lua = that.m_Lua;
+			m_Camera = that.m_Camera;
 		}
 
 		return *this;
@@ -39,6 +32,7 @@ namespace illidan
 		m_PixelID = 0;
 		m_HGLRC = 0;
 		m_Lua = 0;
+		m_Camera = 0;
 	}
 
 	int OpenGLWindow::Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
@@ -90,15 +84,30 @@ namespace illidan
 		m_Lua->ExportOpenGLAPI();
 		m_Lua->CallFile("OpenGLWindow.lua");
 		
+		//创建Camera
+		m_Camera = new Camera(m_WND);
+
 		//调用Init
 		m_Lua->CallFunction("Init");	
 	}
 
 	void OpenGLWindow::Update()
 	{
+		glClear(0x00004000 | 0x00000100);
+
+		//设置投影矩阵
+		glMatrixMode(0x1701);
+		glLoadIdentity();
+		gluPerspective(45.0, 1280 / 800, 0.1, 1000.0);
+
+		glMatrixMode(0x1700);
+		glLoadIdentity();
+
+		m_Camera->Update();
+
 		//调用Update
 		m_Lua->CallFunction("Update");
-
+		
 		SwapBuffers(m_HDC);
 	}
 
@@ -107,8 +116,41 @@ namespace illidan
 		//调用Destroy
 		m_Lua->CallFunction("Destroy");
 
+		//销毁Camera
+		delete m_Camera;
+
 		//清除Lua环境
 		m_Lua->Destroy();
 		delete m_Lua;
+	}
+
+	void OpenGLWindow::OnRButtonDown(WPARAM wParam, LPARAM lParam)
+	{
+		if (m_Camera)
+			m_Camera->OnRButtonDown(wParam, lParam);
+	}
+
+	void OpenGLWindow::OnRButtonUp(WPARAM wParam, LPARAM lParam)
+	{
+		if (m_Camera)
+			m_Camera->OnRButtonUp(wParam, lParam);
+	}
+
+	void OpenGLWindow::OnMouseMove(WPARAM wParam, LPARAM lParam)
+	{
+		if (m_Camera)
+			m_Camera->OnMouseMove(wParam, lParam);
+	}
+
+	void OpenGLWindow::OnKeyDown(WPARAM wParam, LPARAM lParam)
+	{
+		if (m_Camera)
+			m_Camera->OnKeyDown(wParam, lParam);
+	}
+
+	void OpenGLWindow::OnKeyUp(WPARAM wParam, LPARAM lParam)
+	{
+		if (m_Camera)
+			m_Camera->OnKeyUp(wParam, lParam);
 	}
 }
