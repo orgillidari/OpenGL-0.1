@@ -128,6 +128,18 @@
     <ClCompile Include="Vector3f.cpp">
       <Filter>1-Src</Filter>
     </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -224,6 +236,18 @@
       <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="Vector3f.h">
+      <Filter>1-Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>1-Src</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>1-Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h">
+      <Filter>1-Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
       <Filter>1-Src</Filter>
     </ClInclude>
   </ItemGroup>

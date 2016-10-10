@@ -3,7 +3,6 @@
 #include "NTWindow.h"
 #include "Lua.h"
 #include "Camera.h"
-
 #include <gl/GL.h>
 #include <gl/GLU.h>
 

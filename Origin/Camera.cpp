@@ -1,5 +1,7 @@
 #include "Camera.h"
 
+#pragma comment(lib, "OpenGL32.Lib")
+
 
 namespace illidan
 {

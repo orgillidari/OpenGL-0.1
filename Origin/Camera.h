@@ -1,13 +1,9 @@
 #pragma once
 
-#include "Vector3f.h"
-
 #include <windows.h>
+#include "Vector3f.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
-
-#pragma comment(lib, "OpenGL32.Lib")
-
 
 namespace illidan
 {
