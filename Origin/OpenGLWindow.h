@@ -29,7 +29,7 @@ namespace illidan
 	public:
 		virtual int Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height) override;
 		virtual void Init() override;
-		virtual void Update(float delta) override;
+		virtual void Update(unsigned int delta) override;
 		virtual void Destroy() override;
 
 		virtual void OnRButtonDown(WPARAM wParam, LPARAM lParam) override;

@@ -174,7 +174,7 @@ namespace illidan
 
 			if (m_LastTick)
 			{
-				float curTick = GetTickCount();
+				DWORD curTick = GetTickCount();
 				curTick -= m_LastTick;
 				m_LastTick = GetTickCount();
 				Update(curTick);	
@@ -226,7 +226,7 @@ namespace illidan
 
 	}
 
-	void NTWindow::Update(float delta)
+	void NTWindow::Update(unsigned int delta)
 	{
 
 	}

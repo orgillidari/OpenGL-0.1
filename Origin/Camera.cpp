@@ -23,7 +23,7 @@ namespace illidan
 	}
 
 	Camera::Camera(HWND wnd)
-		:m_WND(wnd), m_Pos(0.0f, 0.0f, 1.0f), m_Aim(0.0f, 0.0f, 0.0f), m_Up(0.0f, 1.0f, 0.0f), m_RButtonDown(false), m_LastPoint(), m_bForward(false), m_bBack(false), m_bLeft(false), m_bRight(false), m_Speed(0.1)
+		:m_WND(wnd), m_Pos(0.0f, 0.0f, 1.0f), m_Aim(0.0f, 0.0f, 0.0f), m_Up(0.0f, 1.0f, 0.0f), m_RButtonDown(false), m_LastPoint(), m_bForward(false), m_bBack(false), m_bLeft(false), m_bRight(false), m_Speed(0.1f)
 	{
 	}
 
@@ -58,13 +58,13 @@ namespace illidan
 
 	}
 
-	void Camera::Update(float delta)
+	void Camera::Update(unsigned int delta)
 	{
 		if (m_bForward)
 		{
 			Vector3f forward = m_Aim - m_Pos;
 			forward.Normalize();
-			Vector3f offset = forward * m_Speed * delta;
+			Vector3f offset = forward * m_Speed * (float)delta;
 			m_Pos = m_Pos + offset;
 			m_Aim = m_Aim + offset;
 		}
@@ -72,7 +72,7 @@ namespace illidan
 		{
 			Vector3f forward = m_Aim - m_Pos;
 			forward.Normalize();
-			Vector3f offset = forward * m_Speed * delta;
+			Vector3f offset = forward * m_Speed * (float)delta;
 			m_Pos = m_Pos - offset;
 			m_Aim = m_Aim - offset;
 		}
@@ -81,7 +81,7 @@ namespace illidan
 			Vector3f forward = m_Aim - m_Pos;
 			Vector3f right = forward ^ m_Up;
 			right.Normalize();
-			Vector3f offset = right * m_Speed * delta;
+			Vector3f offset = right * m_Speed * (float)delta;
 			m_Pos = m_Pos - offset;
 			m_Aim = m_Aim - offset;
 		}
@@ -90,7 +90,7 @@ namespace illidan
 			Vector3f forward = m_Aim - m_Pos;
 			Vector3f right = forward ^ m_Up;
 			right.Normalize();
-			Vector3f offset = right * m_Speed * delta;
+			Vector3f offset = right * m_Speed * (float)delta;
 			m_Pos = m_Pos + offset;
 			m_Aim = m_Aim + offset;
 		}

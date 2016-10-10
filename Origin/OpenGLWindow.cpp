@@ -91,7 +91,7 @@ namespace illidan
 		m_Lua->CallFunction("Init");	
 	}
 
-	void OpenGLWindow::Update(float delta)
+	void OpenGLWindow::Update(unsigned int delta)
 	{
 		glClear(0x00004000 | 0x00000100);
 

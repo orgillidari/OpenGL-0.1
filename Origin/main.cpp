@@ -25,7 +25,7 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	NTWindow::RegisterNTWindowClass(L"OpenGL");
 
 	//´´½¨NTWindow´°¿Ú
-	NTWindow* pWindow = NTWindow::CreateNTWindow<OpenGLWindow>(L"OpenGL", L"Demo", 800, 600);
+	NTWindow* pWindow = NTWindow::CreateNTWindow<OpenGLWindow>(L"OpenGL", L"Demo", 1280, 800);
 	pWindow->Init();
 	pWindow->UpdateNTWindow();
 	pWindow->Destroy();

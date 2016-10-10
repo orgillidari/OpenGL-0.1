@@ -1,234 +1,230 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="1-Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="0-Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="2-Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="1-Src">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="3-Lua">
+    <Filter Include="2-Lua">
       <UniqueIdentifier>{11889157-bfe9-4ac2-9990-a149e2493404}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>2-Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NTWindow.cpp">
-      <Filter>2-Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLWindow.cpp">
-      <Filter>2-Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Lua\lapi.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lauxlib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lbaselib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lcode.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ldblib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ldebug.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ldo.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ldump.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lfunc.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lgc.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\linit.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\liolib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\llex.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lmathlib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lmem.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\loadlib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lobject.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lopcodes.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\loslib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lparser.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lstate.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lstring.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lstrlib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ltable.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ltablib.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\ltm.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lundump.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lvm.c">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Lua\lzio.c">
-      <Filter>3-Lua</Filter>
-    </ClCompile>
-    <ClCompile Include="Lua.cpp">
-      <Filter>2-Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLAPI.cpp">
-      <Filter>2-Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExportOpenGLAPI.cpp">
-      <Filter>2-Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLUAPI.cpp">
-      <Filter>2-Source Files</Filter>
+      <Filter>2-Lua</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>2-Source Files</Filter>
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportOpenGLAPI.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="NTWindow.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLAPI.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLUAPI.cpp">
+      <Filter>1-Src</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow.cpp">
+      <Filter>1-Src</Filter>
     </ClCompile>
     <ClCompile Include="Vector3f.cpp">
-      <Filter>2-Source Files</Filter>
+      <Filter>1-Src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="NTWindow.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLWindow.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lapi.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lauxlib.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lcode.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\ldebug.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\ldo.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lfunc.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lgc.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\llex.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\llimits.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lmem.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lobject.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lopcodes.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lparser.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lstate.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lstring.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\ltable.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\ltm.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lua.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\luaconf.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lualib.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lundump.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lvm.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua\lzio.h">
-      <Filter>3-Lua</Filter>
+      <Filter>2-Lua</Filter>
     </ClInclude>
     <ClInclude Include="Lua.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLAPI.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="ExportOpenGLAPI.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLUAPI.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
     <ClInclude Include="Vector3f.h">
-      <Filter>1-Header Files</Filter>
+      <Filter>1-Src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

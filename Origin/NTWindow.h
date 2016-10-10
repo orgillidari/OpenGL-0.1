@@ -34,7 +34,7 @@ namespace illidan
 		int m_Height;
 		HWND m_WND;
 		HDC m_HDC;
-		float m_LastTick;
+		DWORD m_LastTick;
 
 	protected:
 		NTWindow();
@@ -50,7 +50,7 @@ namespace illidan
 	public:
 		virtual int Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
 		virtual void Init();
-		virtual void Update(float delta);
+		virtual void Update(unsigned int delta);
 		virtual void Destroy();
 
 		virtual void OnRButtonDown(WPARAM wParam, LPARAM lParam);
