@@ -106,14 +106,14 @@ namespace illidan
 
 	NTWindow::NTWindow()
 		:
-		m_pWCName(0), m_pWName(0), m_Width(0), m_Height(0), m_WND(0), m_HDC(0)
+		m_pWCName(0), m_pWName(0), m_Width(0), m_Height(0), m_WND(0), m_HDC(0), m_LastTick(0)
 	{
 	}
 
 	//Simple do it;
 	NTWindow::NTWindow(const NTWindow& that)
 		:
-		m_pWCName(that.m_pWCName), m_pWName(that.m_pWName), m_Width(that.m_Width), m_Height(that.m_Height), m_WND(that.m_WND), m_HDC(that.m_HDC)
+		m_pWCName(that.m_pWCName), m_pWName(that.m_pWName), m_Width(that.m_Width), m_Height(that.m_Height), m_WND(that.m_WND), m_HDC(that.m_HDC), m_LastTick(that.m_LastTick)
 	{
 	}
 
@@ -128,6 +128,7 @@ namespace illidan
 			m_Height = that.m_Height;
 			m_WND = that.m_WND;
 			m_HDC = that.m_HDC;
+			m_LastTick = that.m_LastTick;
 		}
 		return *this;
 	}
@@ -141,6 +142,7 @@ namespace illidan
 		m_Height = 0;
 		m_WND = 0;
 		m_HDC = 0;
+		m_LastTick = 0;
 	}
 
 	int NTWindow::RegisterNTWindow()
@@ -170,7 +172,18 @@ namespace illidan
 				DispatchMessage(&msg);
 			}
 
-			Update();
+			if (m_LastTick)
+			{
+				float curTick = GetTickCount();
+				curTick -= m_LastTick;
+				m_LastTick = GetTickCount();
+				Update(curTick);	
+			}
+			else
+			{
+				m_LastTick = GetTickCount();
+			}
+				
 		}
 
 		return 0;
@@ -213,7 +226,7 @@ namespace illidan
 
 	}
 
-	void NTWindow::Update()
+	void NTWindow::Update(float delta)
 	{
 
 	}

@@ -38,7 +38,7 @@ namespace illidan
 		Camera& operator=(const Camera& that);
 		virtual ~Camera();
 
-		void Update();
+		void Update(float delta);
 
 	//Virtual
 		void OnRButtonDown(WPARAM wParam, LPARAM lParam);

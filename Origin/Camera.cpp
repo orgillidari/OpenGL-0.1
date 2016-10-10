@@ -23,7 +23,7 @@ namespace illidan
 	}
 
 	Camera::Camera(HWND wnd)
-		:m_WND(wnd), m_Pos(0.0f, 0.0f, 1.0f), m_Aim(0.0f, 0.0f, 0.0f), m_Up(0.0f, 1.0f, 0.0f), m_RButtonDown(false), m_LastPoint(), m_bForward(false), m_bBack(false), m_bLeft(false), m_bRight(false), m_Speed(0.03)
+		:m_WND(wnd), m_Pos(0.0f, 0.0f, 1.0f), m_Aim(0.0f, 0.0f, 0.0f), m_Up(0.0f, 1.0f, 0.0f), m_RButtonDown(false), m_LastPoint(), m_bForward(false), m_bBack(false), m_bLeft(false), m_bRight(false), m_Speed(0.1)
 	{
 	}
 
@@ -58,13 +58,13 @@ namespace illidan
 
 	}
 
-	void Camera::Update()
+	void Camera::Update(float delta)
 	{
 		if (m_bForward)
 		{
 			Vector3f forward = m_Aim - m_Pos;
 			forward.Normalize();
-			Vector3f offset = forward * m_Speed;
+			Vector3f offset = forward * m_Speed * delta;
 			m_Pos = m_Pos + offset;
 			m_Aim = m_Aim + offset;
 		}
@@ -72,7 +72,7 @@ namespace illidan
 		{
 			Vector3f forward = m_Aim - m_Pos;
 			forward.Normalize();
-			Vector3f offset = forward * m_Speed;
+			Vector3f offset = forward * m_Speed * delta;
 			m_Pos = m_Pos - offset;
 			m_Aim = m_Aim - offset;
 		}
@@ -81,7 +81,7 @@ namespace illidan
 			Vector3f forward = m_Aim - m_Pos;
 			Vector3f right = forward ^ m_Up;
 			right.Normalize();
-			Vector3f offset = right * m_Speed;
+			Vector3f offset = right * m_Speed * delta;
 			m_Pos = m_Pos - offset;
 			m_Aim = m_Aim - offset;
 		}
@@ -90,7 +90,7 @@ namespace illidan
 			Vector3f forward = m_Aim - m_Pos;
 			Vector3f right = forward ^ m_Up;
 			right.Normalize();
-			Vector3f offset = right * m_Speed;
+			Vector3f offset = right * m_Speed * delta;
 			m_Pos = m_Pos + offset;
 			m_Aim = m_Aim + offset;
 		}
@@ -119,8 +119,8 @@ namespace illidan
 	{
 		m_RButtonDown = false;
 
-		ShowCursor(true);
 		SetCursorPos(m_OriginPoint.x, m_OriginPoint.y);
+		ShowCursor(true);
 		ReleaseCapture();
 	}
 
@@ -135,24 +135,19 @@ namespace illidan
 		long deltaX = m_LastPoint.x - x;
 		long deltaY = m_LastPoint.y - y;
 
-		float angleY = deltaX / 800.0f;
-		float angleX = deltaY / 200.0f;
+		float angleY = deltaX / 1000.0f;
+		float angleX = deltaY / 1000.0f;
 
-		Vector3f forward = m_Aim - m_Up;
+		Vector3f forward = m_Aim - m_Pos;
 		Vector3f right = forward ^ m_Up;
 
 		RotateView(angleY, m_Up.X, m_Up.Y, m_Up.Z);
-		RotateView(-angleX, right.X, right.Y, right.Z);
+		RotateView(angleX, right.X, right.Y, right.Z);
 
-		m_LastPoint.x = x;
-		m_LastPoint.y = y;
-
-
+		//防止鼠标移动出屏幕出现跳转
 		SetCursorPos(m_OriginPoint.x, m_OriginPoint.y);
-
 		m_LastPoint.x = m_OriginPoint.x;
 		m_LastPoint.y = m_OriginPoint.y;
-
 		ScreenToClient(m_WND, &m_LastPoint);
 	}
 

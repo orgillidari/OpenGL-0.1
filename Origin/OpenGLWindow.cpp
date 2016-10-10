@@ -91,7 +91,7 @@ namespace illidan
 		m_Lua->CallFunction("Init");	
 	}
 
-	void OpenGLWindow::Update()
+	void OpenGLWindow::Update(float delta)
 	{
 		glClear(0x00004000 | 0x00000100);
 
@@ -103,7 +103,7 @@ namespace illidan
 		glMatrixMode(0x1700);
 		glLoadIdentity();
 
-		m_Camera->Update();
+		m_Camera->Update(delta);
 
 		//µ÷ÓÃUpdate
 		m_Lua->CallFunction("Update");
