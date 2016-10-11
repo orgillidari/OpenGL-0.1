@@ -17,7 +17,7 @@ namespace illidan
 		{
 			if (m_Data)
 			{
-				delete m_Data;
+				delete[] m_Data;
 				m_Len = 0;
 			}
 		}

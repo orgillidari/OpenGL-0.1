@@ -10,13 +10,11 @@ namespace illidan
 		float X;
 		float Y;
 		float Z;
-	
-	public:
-		Vector3f();
-		Vector3f& operator=(const Vector3f& that);
 
 	public:
+		Vector3f();
 		Vector3f(float x, float y, float z);
+		Vector3f& operator=(const Vector3f& that);
 		Vector3f operator-(const Vector3f& that);
 		Vector3f operator+(const Vector3f& that);
 		float operator*(const Vector3f& that);

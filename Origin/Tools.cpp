@@ -12,7 +12,7 @@ namespace illidan
 		{
 			if (fileName[i] == '.')
 			{
-				return fileName + i + i;
+				return fileName + i + 1;
 			}
 		}
 

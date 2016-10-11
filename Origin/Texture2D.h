@@ -24,5 +24,6 @@ namespace illidan
 
 	public:
 		Texture2D();
+		GLuint GetTextureID();
 	};
 }

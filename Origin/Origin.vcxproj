@@ -185,6 +185,7 @@
     <ClCompile Include="NTWindow.cpp" />
     <ClCompile Include="OpenGLUAPI.cpp" />
     <ClCompile Include="OpenGLWindow.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="Vector3f.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="OpenGLUAPI.h" />
     <ClInclude Include="OpenGLWindow.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="Vector3f.h" />

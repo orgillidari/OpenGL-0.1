@@ -6,12 +6,12 @@
 namespace illidan
 {
 	OpenGLWindow::OpenGLWindow()
-		: NTWindow(), m_PixelID(0), m_HGLRC(0), m_Lua(0), m_Camera(0)
+		: NTWindow(), m_PixelID(0), m_HGLRC(0), m_Lua(0), m_Camera(0), m_SkyBox(0)
 	{
 	}
 
 	OpenGLWindow::OpenGLWindow(const OpenGLWindow& that)
-		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC), m_Camera(that.m_Camera)
+		: NTWindow(that), m_PixelID(that.m_PixelID), m_HGLRC(that.m_HGLRC), m_Camera(that.m_Camera), m_SkyBox(that.m_SkyBox)
 	{
 	}
 	OpenGLWindow& OpenGLWindow::operator=(const OpenGLWindow& that)
@@ -23,6 +23,7 @@ namespace illidan
 			m_PixelID = that.m_PixelID;
 			m_HGLRC = that.m_HGLRC;
 			m_Camera = that.m_Camera;
+			m_SkyBox = that.m_SkyBox;
 		}
 
 		return *this;
@@ -33,6 +34,7 @@ namespace illidan
 		m_HGLRC = 0;
 		m_Lua = 0;
 		m_Camera = 0;
+		m_SkyBox = 0;
 	}
 
 	int OpenGLWindow::Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height)
@@ -86,6 +88,8 @@ namespace illidan
 		
 		//创建Camera
 		m_Camera = new Camera(m_WND);
+		m_SkyBox = new SkyBox();
+		m_SkyBox->LoadTexture2D("./Pic/front.bmp", "./Pic/back.bmp", "./Pic/left.bmp", "./Pic/right.bmp", "./Pic/top.bmp", "./Pic/bottom.bmp");
 
 		//调用Init
 		m_Lua->CallFunction("Init");	
@@ -93,17 +97,19 @@ namespace illidan
 
 	void OpenGLWindow::Update(unsigned int delta)
 	{
-		glClear(0x00004000 | 0x00000100);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//设置投影矩阵
-		glMatrixMode(0x1701);
+		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		gluPerspective(45.0, 1280 / 800, 0.1, 1000.0);
 
-		glMatrixMode(0x1700);
+		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-
+		
 		m_Camera->Update(delta);
+		m_SkyBox->Update(m_Camera->GetPos());
+
 
 		//调用Update
 		m_Lua->CallFunction("Update");

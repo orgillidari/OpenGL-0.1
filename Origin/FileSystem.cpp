@@ -19,7 +19,7 @@ namespace illidan
 
 		data.m_Data = new unsigned char[data.m_Len + 1];
 		fread(data.m_Data, 1, data.m_Len, pf);
-		data.m_Data[data.m_Len + 1] = 0;
+		data.m_Data[data.m_Len] = 0;
 		fclose(pf);
 		
 		return 0;

@@ -3,6 +3,7 @@
 #include "NTWindow.h"
 #include "Lua.h"
 #include "Camera.h"
+#include "SkyBox.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
@@ -17,6 +18,7 @@ namespace illidan
 		HGLRC m_HGLRC;
 		Lua* m_Lua;
 		Camera* m_Camera;
+		SkyBox* m_SkyBox;
 
 	public:
 		OpenGLWindow();

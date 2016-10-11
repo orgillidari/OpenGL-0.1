@@ -100,6 +100,11 @@ namespace illidan
 		gluLookAt(m_Pos.X, m_Pos.Y, m_Pos.Z, m_Aim.X, m_Aim.Y, m_Aim.Z, m_Up.X, m_Up.Y, m_Up.Z);
 	}
 
+	Vector3f Camera::GetPos()
+	{
+		return m_Pos;
+	}
+
 	void Camera::OnRButtonDown(WPARAM wParam, LPARAM lParam)
 	{
 		int x = LOWORD(lParam);

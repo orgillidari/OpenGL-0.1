@@ -36,7 +36,9 @@ namespace illidan
 
 		void Update(unsigned int delta);
 
+		Vector3f GetPos();
 	//Virtual
+	public:
 		void OnRButtonDown(WPARAM wParam, LPARAM lParam);
 		void OnRButtonUp(WPARAM wParam, LPARAM lParam);
 		void OnMouseMove(WPARAM wParam, LPARAM lParam);
