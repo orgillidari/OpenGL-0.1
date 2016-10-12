@@ -25,10 +25,8 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	NTWindow::RegisterNTWindowClass(L"OpenGL");
 
 	//创建NTWindow窗口
-	NTWindow* pWindow = NTWindow::CreateNTWindow<OpenGLWindow>(L"OpenGL", L"Demo", 1280, 800);
-	pWindow->Init();
-	pWindow->UpdateNTWindow();
-	pWindow->Destroy();
+	NTWindow* pWindow = NTWindow::CreateNTWindow<OpenGLWindow>(L"OpenGL", L"Create by illidan", 1600, 900);
+	pWindow->RenderNTWindow();
 
 	//清除NTWindow信息
 	NTWindow::ClearNTWindow();

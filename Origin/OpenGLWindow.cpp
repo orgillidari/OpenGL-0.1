@@ -102,7 +102,7 @@ namespace illidan
 		//…Ë÷√Õ∂”∞æÿ’Û
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(45.0, 1280 / 800, 0.1, 1000.0);
+		gluPerspective(60, m_Width / m_Height, 0.1, 1000.0);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();

@@ -155,8 +155,10 @@ namespace illidan
 		return 0;
 	}
 
-	int NTWindow::UpdateNTWindow()
+	int NTWindow::RenderNTWindow()
 	{
+		Init();
+
 		//ÏûÏ¢Ñ­»·
 		MSG msg;
 		while (true)
@@ -186,6 +188,7 @@ namespace illidan
 				
 		}
 
+		Destroy();
 		return 0;
 	}
 

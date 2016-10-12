@@ -44,10 +44,10 @@ namespace illidan
 		int RegisterNTWindow();
 
 	public:
-		int UpdateNTWindow();
+		int RenderNTWindow();
 
 	//Virtual
-	public:
+	protected:
 		virtual int Construtor(LPCWSTR pWCName, LPCWSTR pWName, int width, int height);
 		virtual void Init();
 		virtual void Update(unsigned int delta);
@@ -58,6 +58,7 @@ namespace illidan
 		virtual void OnMouseMove(WPARAM wParam, LPARAM lParam);
 		virtual void OnKeyDown(WPARAM wParam, LPARAM lParam);
 		virtual void OnKeyUp(WPARAM wParam, LPARAM lParam);
+
 	};
 
 
