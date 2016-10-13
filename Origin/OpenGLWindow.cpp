@@ -107,6 +107,8 @@ namespace illidan
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		
+		glViewport(0, 0, 1200, 900);
+
 		m_Camera->Update(delta);
 		m_SkyBox->Update(m_Camera->GetPos());
 
