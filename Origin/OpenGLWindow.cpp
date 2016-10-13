@@ -103,7 +103,7 @@ namespace illidan
 		//设置投影矩阵
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(60, m_Width / m_Height, 0.1, 1000.0);
+		gluPerspective(45, 1200 / 900, 0.1, 1000.0);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -120,7 +120,7 @@ namespace illidan
 		//设置投影矩阵
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(60, m_Width / m_Height, 0.1, 1000.0);
+		gluPerspective(60, 400 / 400, 0.1, 1000.0);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
