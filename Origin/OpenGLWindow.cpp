@@ -99,6 +99,7 @@ namespace illidan
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		//视口Left
 		//设置投影矩阵
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -111,6 +112,21 @@ namespace illidan
 
 		m_Camera->Update(delta);
 		m_SkyBox->Update(m_Camera->GetPos());
+
+		//调用Update
+		m_Lua->CallFunction("Update");
+
+		//视口Right
+		//设置投影矩阵
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluPerspective(60, m_Width / m_Height, 0.1, 1000.0);
+
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+
+		glViewport(1200, 500, 400, 400);
+		m_SkyBox->Update(Vector3f(0, 0, 0));
 
 
 		//调用Update
